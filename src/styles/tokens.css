@@ -1,0 +1,67 @@
+/*
+ * Colour themes: dark (default), light and kawaii pink. Components only use
+ * these tokens. They apply inside any element with class "sapphire-theme"
+ * (the <html> of the sites, or the root of an embedded panel such as the
+ * blog CMS), so this file never changes anything outside that element.
+ * Pick a theme with data-theme="light" or data-theme="kawaii" on it.
+ */
+.sapphire-theme {
+  --bg: #0b0d12;
+  --surface: #12151c;
+  --surface-2: #0e1016;
+  --chip: #1a1e27;
+  --border: #232733;
+  --border-strong: #343a4a;
+  --text: #eceef3;
+  --muted: #979dad;
+  --accent: #5b8cff;
+  --accent-strong: #2f63f0;
+  --accent-hover: #3b70ff;
+  --on-accent: #ffffff;
+  --ok: #3ddc97;
+  --warn: #f5b942;
+  --danger: #ff5c6c;
+  --glow: rgba(47, 99, 240, 0.14);
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  color-scheme: dark;
+}
+.sapphire-theme[data-theme='light'] {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #f1f3f8;
+  --chip: #e8ebf2;
+  --border: #dfe3ec;
+  --border-strong: #c6ccd8;
+  --text: #141824;
+  --muted: #5b6375;
+  --accent: #2f63f0;
+  --accent-strong: #2f63f0;
+  --accent-hover: #2453d6;
+  --ok: #0f9d62;
+  --warn: #c47f00;
+  --danger: #dc3545;
+  --glow: rgba(47, 99, 240, 0.08);
+  color-scheme: light;
+}
+.sapphire-theme[data-theme='kawaii'] {
+  --bg: #fff0f6;
+  --surface: #ffffff;
+  --surface-2: #fff6fa;
+  --chip: #ffe2ef;
+  --border: #ffd3e5;
+  --border-strong: #f6b2cf;
+  --text: #4a2340;
+  --muted: #96647f;
+  --accent: #d6337f;
+  --accent-strong: #d6337f;
+  --accent-hover: #bf2a6f;
+  --ok: #1f9e70;
+  --warn: #d98a00;
+  --danger: #e0354f;
+  --glow: rgba(255, 105, 170, 0.22);
+  --font-body: 'Nunito', 'Inter', system-ui, sans-serif;
+  color-scheme: light;
+}
+/* Softer state glow behind big timers on light backgrounds. */
+.sapphire-theme:is([data-theme='light'], [data-theme='kawaii']) { --state-glow: 6%; }

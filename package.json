@@ -1,0 +1,67 @@
+{
+  "name": "@sapphirelabs/ui",
+  "description": "Shared layout, themes, styles and browser helpers for the Sapphire Labs tool sites (Astro).",
+  "version": "0.1.0",
+  "license": "MIT",
+  "homepage": "https://github.com/sapphire-labs-dev/sapphire-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sapphire-labs-dev/sapphire-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sapphire-labs-dev/sapphire-ui/issues"
+  },
+  "keywords": [
+    "astro-component",
+    "sapphire-labs"
+  ],
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "src",
+    "!src/**/*.test.ts"
+  ],
+  "exports": {
+    "./SiteLayout.astro": "./src/layouts/SiteLayout.astro",
+    "./components/*": "./src/components/*",
+    "./config": "./src/config.mjs",
+    "./i18n": "./src/i18n/index.ts",
+    "./testing": "./src/testing.ts",
+    "./assets/*": "./src/assets/*",
+    "./styles/*": "./src/styles/*",
+    "./*": "./src/client/*.ts"
+  },
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "check": "astro check",
+    "test": "vitest run",
+    "prepublishOnly": "npm run check && npm test"
+  },
+  "peerDependencies": {
+    "astro": "^7.4.0"
+  },
+  "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "@fontsource/nunito": "^5.3.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@types/node": "^24.19.2",
+    "astro": "^7.4.12",
+    "typescript": "^6.0.3",
+    "vitest": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

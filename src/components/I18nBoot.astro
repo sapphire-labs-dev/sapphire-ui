@@ -1,0 +1,16 @@
+---
+// Lets boot/i18n.js apply the language before the first paint (see that
+// file). The strings go in a JSON data block, which browsers never execute,
+// so the page needs no inline script and works under a strict CSP.
+import type { Dict } from '../i18n';
+import bootUrl from '../boot/i18n.js?url';
+
+interface Props { dict: Dict }
+const { dict } = Astro.props;
+
+// Escape '<' so the JSON can never close the <script> element early.
+const json = JSON.stringify(dict).replace(/</g, '\u003c');
+---
+
+<script type="application/json" id="i18n-dict" set:html={json} />
+<script is:inline src={bootUrl}></script>

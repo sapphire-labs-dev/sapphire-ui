@@ -1,0 +1,22 @@
+---
+// Top of a site's home page: eyebrow, big title and lead paragraph.
+// Text props are English fallbacks; the *Key props translate them.
+interface Props {
+  eyebrow: string; eyebrowKey: string;
+  title: string; titleKey: string;
+  lead: string; leadKey: string;
+}
+const { eyebrow, eyebrowKey, title, titleKey, lead, leadKey } = Astro.props;
+---
+
+<section class="wrap hero">
+  <p class="eyebrow" data-i18n={eyebrowKey}>{eyebrow}</p>
+  <h1 data-i18n={titleKey}>{title}</h1>
+  <p class="hero-lead" data-i18n={leadKey}>{lead}</p>
+</section>
+
+<style>
+  .hero { padding-top: 56px; padding-bottom: 40px; }
+  h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 18px; max-width: 18ch; }
+  .hero-lead { color: var(--muted); font-size: 1.12rem; max-width: 56ch; margin: 0; }
+</style>

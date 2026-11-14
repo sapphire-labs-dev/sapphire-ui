@@ -1,0 +1,43 @@
+---
+// A tool on a site's home page: optional icon, name, one-line pitch and a
+// call to action. Without href it is shown as "coming soon". Put an icon (an
+// inline 24×24 SVG) in the default slot, or leave it empty for a text-only
+// card; arrow={false} drops the "→" after the call to action. Wrap cards in
+// <div class="tool-grid">.
+interface Props {
+  href?: string;
+  title: string; titleKey: string;
+  body: string; bodyKey: string;
+  cta?: string; ctaKey?: string;
+  arrow?: boolean;
+}
+const { href, title, titleKey, body, bodyKey, cta, ctaKey, arrow = true } = Astro.props;
+const Tag = href ? 'a' : 'div';
+const hasIcon = Astro.slots.has('default');
+---
+
+<Tag class:list={['card', 'tool', { soon: !href }]} href={href} aria-disabled={href ? undefined : 'true'}>
+  {hasIcon && <span class="icon" aria-hidden="true"><slot /></span>}
+  <h2 data-i18n={titleKey}>{title}</h2>
+  <p data-i18n={bodyKey}>{body}</p>
+  {href && cta
+    ? <span class="cta"><span data-i18n={ctaKey}>{cta}</span>{arrow && ' →'}</span>
+    : <span class="badge" data-i18n="common.soon">Coming soon</span>}
+</Tag>
+
+<style>
+  .tool { display: flex; flex-direction: column; gap: 10px; color: var(--text); text-decoration: none; padding: 26px; transition: border-color 0.2s, transform 0.2s; }
+  a.tool:hover { border-color: var(--accent); transform: translateY(-2px); }
+  @media (prefers-reduced-motion: reduce) { a.tool:hover { transform: none; } }
+  h2 { margin: 6px 0 0; font-size: 1.3rem; letter-spacing: -0.01em; }
+  .tool > h2:first-child { margin-top: 0; }
+  p { margin: 0; color: var(--muted); flex: 1; }
+  .icon { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; background: var(--chip); color: var(--accent); }
+  .cta { color: var(--accent); font-weight: 600; margin-top: 8px; }
+  .soon { opacity: 0.6; }
+  .badge {
+    align-self: flex-start; margin-top: 8px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;
+    padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border-strong); color: var(--muted);
+  }
+  :global(.tool-grid) { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+</style>
