@@ -2,6 +2,10 @@
 
 All notable changes to `@sapphirelabs/ui`. The format follows [Keep a Changelog](https://keepachangelog.com/) and the package uses [semantic versioning](https://semver.org/).
 
+## 0.1.1
+
+- Fix: links passed in `SiteLayout`'s `footer` slot now get the footer style (muted, no underline) instead of the default link style.
+
 ## 0.1.0
 
 First version (beta), extracted from the Meeting Helpers site.
